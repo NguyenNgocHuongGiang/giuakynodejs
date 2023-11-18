@@ -1,0 +1,98 @@
+body {
+    background-color: bisque;
+    font-family: 'Arial', sans-serif;
+}
+
+#wrapper {
+    width: 600px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+#left {
+    width: 30%;
+    float: left;
+    background-color: rgb(252, 255, 240);
+    min-height: 300px;
+    border: solid 1px brown;
+}
+
+#right {
+    width: 70%;
+    float: right;
+    min-height: 300px;
+}
+
+#boxTitle {
+    border-bottom: solid 1px brown;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+#boxContent {
+    padding: 10px;
+    text-align: center;
+    height: 300px;
+    overflow-y: auto;
+}
+
+#sayHi {
+    text-align: right;
+    padding: 10px;
+    border: solid 1px brown;
+    border-left: none;
+    background-color: #f8f9fa;
+}
+
+#listMessages {
+    height: 300px;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.ms {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    max-width: 70%;
+}
+
+.ms span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Thêm một lớp CSS để hiển thị tin nhắn từ người gửi khác nhau */
+.ms.other-user {
+    background-color: #ddd;
+    color: #333;
+}
+
+#txtMessage {
+    width: 80%; /* Trừ đi border và padding */
+    background-color: #f9f5ef;
+    border: solid 1px brown;
+    padding: 10px;
+    margin-top: 10px;
+    height: 40px;
+}
+
+#sendarea{
+    display: flex;
+}
+
+#btnSendMessage {
+    width: 20%;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}

@@ -11,52 +11,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" type="text/css" href="layout.css">
 </head>
 
 <body>
     <div id="wrapper">
         <div id="loginForm">
-            <h3>YOUR NAME:</h3>
-            <input type="text" name="" id="txtUsername">
-            <input type="button" value="Register" id="btnRegister" class="bnt btn-success">
-
-            <img src="welcome.gif" width="100%" alt="" srcset="">
+            <h1 style="text-align: center; font-weight: bold; margin-bottom: 20px;">WELCOME TO CHAT WEB</h1>
+            <img src="welcome.gif" width="100%" alt="" srcset="" style="margin-bottom: 20px;">
+            <div class="form-group">
+                <label for="">Nhập tên người dùng:</label>
+                <input type="text" name="" id="txtUsername" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="button" id="btnRegister" class="btn btn-success"
+                    style="margin-bottom: 50px;">Register</button>
+            </div>
         </div>
+
         <div id="chatForm">
             <div id="left">
                 <div id="boxTitle">User Online</div>
                 <div id="boxContent"></div>
+                <p id="clicktoroom">Room chat</p>
             </div>
             <div id="right">
                 <div id="sayHi">
                     Hello <span id="currentUser">Huong Giang</span>
-                    <input type="button" value="Logout" id="btnLogout">
+                    <button type="button" class="btn btn-warning" id="btnLogout">Logout</button>
                 </div>
-
                 <div id="listMessages"></div>
-
                 <div id="thongbao"></div>
-
                 <div id="sendarea">
-                    <input type="text" id="txtMessage">
-                    <input type="button" id="btnSendMessage" value="Send">
+                    <div class="form-group">
+                        <input type="text" name="" id="txtMessage" class="form-control" placeholder=""
+                            aria-describedby="helpId">
+                    </div>
+                    <button type="button" class="btn btn-success" id="btnSendMessage"><i
+                            class="fa-regular fa-paper-plane"></i></button>
                 </div>
             </div>
             <div style="clear: both;"></div>
-            <div id="room" style="margin-top: 25px;">
-                <h3>Tạo room nhỏ</h3>
-                <input type="text" id="txtRoom" placeholder="Nhập tên room">
-                <input type="button" value="Tạo room" id="btnTaoRoom">
-                <div id="content">
+            <div id="room" style="margin-top: 25px; font-weight: bold;">
+                <h3 style="font-weight: bold; color: red;">ROOM CHAT</h3>
+
+                <div class="form-group">
+                    <input type="text" name="" id="txtRoom" class="form-control" placeholder="Nhập tên room"
+                        aria-describedby="helpId">
+                </div>
+                <button type="button" class="btn btn-success" id="btnTaoRoom">Tạo / Xem room</button>
+
+                <div id="content" style="margin-bottom: 50px;">
                     <div id="left-room">
-                        <h4>ROOMS ĐANG CÓ</h4>
+                        <h4 id="title">ROOMS HIỆN CÓ</h4>
                         <div id="dsroom"></div>
                     </div>
-                    <h4 id="roomHientai">...</h4>
                     <div id="right-room">
-                        <input type="text" id="txtMessage2">
-                        <input type="button" value="Chat" id="btnChat">
+                        <h4 id="roomHientai">...</h4>
+                        <div id="roomtext"></div>
+                        <div class="action" style="display: flex; width: 100%; margin-bottom: 50px;">
+                            <div class="form-group">
+                                <input type="text" name="" id="txtMessage2" class="form-control" placeholder=""
+                                    aria-describedby="helpId">
+                            </div>
+                            <button type="button" class="btn btn-success" id="btnChat">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>

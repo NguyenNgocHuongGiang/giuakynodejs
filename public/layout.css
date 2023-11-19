@@ -12,19 +12,19 @@ body {
 #left {
     width: 30%;
     float: left;
-    background-color: rgb(252, 255, 240);
-    min-height: 300px;
-    border: solid 1px brown;
+    /* background-color: rgb(252, 255, 240); */
+    min-height: 500px;
 }
 
 #right {
     width: 70%;
     float: right;
-    min-height: 300px;
+    min-height: 500px;
 }
 
 #boxTitle {
-    border-bottom: solid 1px brown;
+    border: solid 1px brown;
+    border-bottom: none;
     padding: 10px;
     text-align: center;
     font-size: 20px;
@@ -35,24 +35,30 @@ body {
 #boxContent {
     padding: 10px;
     text-align: center;
-    height: 300px;
+    height: 500px;
     overflow-y: auto;
+    background-color: #9eadbb;
+    color: white;
+    border: solid 1px brown;
 }
 
 #sayHi {
     text-align: right;
-    padding: 10px;
+    padding: 6px 15px;
     border: solid 1px brown;
     border-left: none;
     background-color: #f8f9fa;
 }
 
 #listMessages {
-    height: 300px;
+    height: 500px;
     overflow-y: auto;
     background-color: #f0f0f0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid brown;
+    border-top: none;
+    border-left: none;
+    /* position: relative; */
 }
 
 .ms {
@@ -68,9 +74,10 @@ body {
 }
 
 .ms.mine {
-    background-color: #4CAF50;
+    background-color: #9eadbb;
     color: white;
     margin-left: auto;
+    transition: all 0.75s;
 }
 
 .ms.other-user {
@@ -79,45 +86,107 @@ body {
     margin-right: auto;
 }
 
+#thongbao {
+    display: flex;
+}
+
 #txtMessage {
-    width: 80%; /* Trừ đi border và padding */
+    width: 80%;
     background-color: #f9f5ef;
-    border: solid 1px brown;
+    border: solid 1px black;
     padding: 10px;
     margin-top: 10px;
     height: 40px;
 }
 
-#sendarea{
+#sendarea {
     display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-#btnSendMessage {
-    width: 20%;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
+#sendarea .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+#txtMessage,
+#txtRoom , #txtMessage2{
+    width: 100%;
     padding: 8px;
+}
+
+#btnSendMessage,
+#btnTaoRoom, #btnChat {
+    padding: 8px 15px;
+}
+
+#clicktoroom {
+    margin: 20px 30px;
+    color: gray;
+    font-weight: bold;
     cursor: pointer;
+    font-size: 20px;
 }
 
-#left-room{
-    width: 20%;
+#clicktoroom:hover {
+    color: red;
+}
+
+#left-room {
+    width: 40%;
     float: left;
-    border: solid 1px brown;
     margin-top: 20px;
-    padding: 5px;
 }
 
-#right-room{
-    width: 80%;
+#title {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    border: solid 1px black;
+}
+
+#right-room {
+    margin-top: 20px;
+    width: 60%;
     float: right;
 }
 
-#roomHientai{
+#roomHientai {
     background-color: #333;
     color: white;
-    padding: 5px;
-    width: 100px;
-    float: right;
+    padding: 10px;
+    width: 100%;
+    text-align: right;
+    border: solid 1px black;
+}
+
+#dsroom {
+    background-color: #f0f0f0;
+    height: 350px;
+    border: solid 1px black;
+}
+
+#roomtext {
+    background-color: #f0f0f0;
+    height: 350px;
+    border: solid 1px black;
+    border-left: none;
+}
+
+#txtMessage2 {
+    /* width: 100%; */
+    background-color: #f9f5ef;
+    border: solid 1px black;
+    padding: 10px;
+    margin-top: 10px;
+    height: 40px;
+}
+
+#btnChat{
+    width: 70px;
+    padding: 10px;
+    margin-top: 10px;
+    height: 40px;
 }

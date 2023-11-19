@@ -44,7 +44,7 @@ socket.on("server-send-room-socket", function (data) {
 })
 
 socket.on("server-chat", function (data) {
-    $("#right-room").append("<div >" + data + "</div>")
+    $("#roomtext").append("<div class='ms' >" + data + "</div>")
 })
 
 
@@ -56,15 +56,22 @@ function scrollDown() {
 $(document).ready(function () {
     $("#loginForm").show();
     $("#chatForm").hide();
+    $("#room").hide();
 
     $("#btnRegister").click(function () {
-        socket.emit("client-send-username", $("#txtUsername").val())
+        var username = $("#txtUsername").val();
+        if (username.trim() === "") {
+            alert("Please enter a username before registering.");
+        } else {
+            socket.emit("client-send-username", username);
+        }
     });
 
     $("#btnLogout").click(function () {
         socket.emit("logout");
         $("#chatForm").hide(2);
         $("#loginForm").show(1);
+        $("#room").hide();
     });
 
     $("#btnSendMessage").click(function () {
@@ -80,6 +87,10 @@ $(document).ready(function () {
         socket.emit("khong-go")
     })
 
+    $("#clicktoroom").click(function () {
+        $("#room").show(1);
+    })
+
     $("#btnTaoRoom").click(function () {
         socket.emit("tao-room", $("#txtRoom").val())
     })
@@ -88,7 +99,7 @@ $(document).ready(function () {
         socket.emit("user-chat", $("#txtMessage2").val())
     })
 
-    $(document).on("click", ".room", function() {
+    $(document).on("click", ".room", function () {
         var tenPhong = $(this).text();
         socket.emit("change-chat", tenPhong);
     });

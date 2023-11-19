@@ -12,13 +12,15 @@ socket.on("server-send-dk-success", function (data) {
 
 socket.on("server-send-ds-users", function (data) {
     $("#boxContent").html("");
-    data.forEach(function(i) {
-        $("#boxContent").append("<div class='user'>" + i +"</div>")
+    data.forEach(function (i) {
+        $("#boxContent").append("<div class='user'>" + i + "</div>")
     });
 })
 
 socket.on("server-send-message", function (data) {
-    $("#listMessages").append("<div class='ms'>" + data.un + ":" + data.nd +"</div>")
+    var isMine = (data.un === $("#currentUser").text());
+    var messageClass = isMine ? "mine" : "other-user";
+    $("#listMessages").append("<div class='ms " + messageClass + "'>" + "<span>" + data.un + ":</span>" + data.nd + "</div>");
     scrollDown();
 })
 
@@ -29,6 +31,22 @@ socket.on("dang-go-chu", function (data) {
 socket.on("khong-go-chu", function (data) {
     $("#thongbao").html("");
 })
+
+socket.on("server-send-rooms", function (data) {
+    $("#dsroom").html("");
+    data.map(function (r) {
+        $("#dsroom").append("<h5 class='room'>" + r + "</h5>")
+    })
+})
+
+socket.on("server-send-room-socket", function (data) {
+    $("#roomHientai").html(data);
+})
+
+socket.on("server-chat", function (data) {
+    $("#right-room").append("<div >" + data + "</div>")
+})
+
 
 function scrollDown() {
     var container = $("#listMessages");
@@ -61,4 +79,17 @@ $(document).ready(function () {
     $("#txtMessage").focusout(function () {
         socket.emit("khong-go")
     })
+
+    $("#btnTaoRoom").click(function () {
+        socket.emit("tao-room", $("#txtRoom").val())
+    })
+
+    $("#btnChat").click(function () {
+        socket.emit("user-chat", $("#txtMessage2").val())
+    })
+
+    $(document).on("click", ".room", function() {
+        var tenPhong = $(this).text();
+        socket.emit("change-chat", tenPhong);
+    });
 })

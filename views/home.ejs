@@ -20,6 +20,8 @@
             <h3>YOUR NAME:</h3>
             <input type="text" name="" id="txtUsername">
             <input type="button" value="Register" id="btnRegister" class="bnt btn-success">
+
+            <img src="welcome.gif" width="100%" alt="" srcset="">
         </div>
         <div id="chatForm">
             <div id="left">
@@ -39,6 +41,23 @@
                 <div id="sendarea">
                     <input type="text" id="txtMessage">
                     <input type="button" id="btnSendMessage" value="Send">
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="room" style="margin-top: 25px;">
+                <h3>Tạo room nhỏ</h3>
+                <input type="text" id="txtRoom" placeholder="Nhập tên room">
+                <input type="button" value="Tạo room" id="btnTaoRoom">
+                <div id="content">
+                    <div id="left-room">
+                        <h4>ROOMS ĐANG CÓ</h4>
+                        <div id="dsroom"></div>
+                    </div>
+                    <h4 id="roomHientai">...</h4>
+                    <div id="right-room">
+                        <input type="text" id="txtMessage2">
+                        <input type="button" value="Chat" id="btnChat">
+                    </div>
                 </div>
             </div>
         </div>

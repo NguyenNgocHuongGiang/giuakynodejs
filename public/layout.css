@@ -59,8 +59,6 @@ body {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 8px;
-    background-color: #4CAF50;
-    color: white;
     max-width: 70%;
 }
 
@@ -69,10 +67,16 @@ body {
     margin-right: 5px;
 }
 
-/* Thêm một lớp CSS để hiển thị tin nhắn từ người gửi khác nhau */
+.ms.mine {
+    background-color: #4CAF50;
+    color: white;
+    margin-left: auto;
+}
+
 .ms.other-user {
     background-color: #ddd;
     color: #333;
+    margin-right: auto;
 }
 
 #txtMessage {
@@ -95,4 +99,25 @@ body {
     border: none;
     padding: 8px;
     cursor: pointer;
+}
+
+#left-room{
+    width: 20%;
+    float: left;
+    border: solid 1px brown;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+#right-room{
+    width: 80%;
+    float: right;
+}
+
+#roomHientai{
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    width: 100px;
+    float: right;
 }

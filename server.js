@@ -10,6 +10,7 @@ var io = require("socket.io")(server);
 server.listen(3000);
 
 var mangUsers = []
+var mangPhong = []
 
 io.on("connection", function (socket) {
     console.log("Co nguoi vua ket noi " + socket.id);
@@ -54,7 +55,7 @@ io.on("connection", function (socket) {
     })
 
     socket.on("user-chat", function (data) {
-        io.sockets.in(socket.Phong).emit("server-chat",data)
+        io.sockets.in(socket.Phong).emit("server-chat", { un: socket.username, nd: data })
     })
 
     socket.on("change-chat", function (data) {

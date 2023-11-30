@@ -1,7 +1,7 @@
 var socket = io("http://localhost:3000")
 
 socket.on("server-send-dk-fail", function () {
-    alert("Username da ton tai")
+    alert("Username đã tồn tại")
 })
 
 socket.on("server-send-dk-success", function (data) {
@@ -35,21 +35,29 @@ socket.on("khong-go-chu", function (data) {
 socket.on("server-send-rooms", function (data) {
     $("#dsroom").html("");
     data.map(function (r) {
-        $("#dsroom").append("<h5 class='room'>" + r + "</h5>")
+        $("#dsroom").append("<p class='room' style='margin-bottom: 10px'>" + r + "</p>")
     })
 })
 
 socket.on("server-send-room-socket", function (data) {
     $("#roomHientai").html(data);
+    $("#roomtext").html("")
 })
 
 socket.on("server-chat", function (data) {
-    $("#roomtext").append("<div class='ms' >" + data + "</div>")
+    var isMine = (data.un === $("#currentUser").text());
+    var messageClass = isMine ? "mine" : "other-user";
+    $("#roomtext").append("<div class='ms " + messageClass + "'>" + "<span>" + data.un + ":</span>" + data.nd + "</div>");
+    scrollDown2();
 })
-
 
 function scrollDown() {
     var container = $("#listMessages");
+    container.scrollTop(container[0].scrollHeight);
+}
+
+function scrollDown2() {
+    var container = $("#roomtext");
     container.scrollTop(container[0].scrollHeight);
 }
 
@@ -75,8 +83,13 @@ $(document).ready(function () {
     });
 
     $("#btnSendMessage").click(function () {
-        socket.emit("user-send-message", $("#txtMessage").val())
-        $("#txtMessage").val("")
+        if ($("#txtMessage").val() === "") {
+            alert('Bạn chưa nhập tin nhắn')
+        }
+        else {
+            socket.emit("user-send-message", $("#txtMessage").val())
+            $("#txtMessage").val("")
+        }
     });
 
     $("#txtMessage").focusin(function () {
@@ -96,7 +109,13 @@ $(document).ready(function () {
     })
 
     $("#btnChat").click(function () {
-        socket.emit("user-chat", $("#txtMessage2").val())
+        if ($("#txtMessage2").val() === "") {
+            alert('Bạn chưa nhập tin nhắn')
+        }
+        else {
+            socket.emit("user-chat", $("#txtMessage2").val())
+            $("#txtMessage2").val("")
+        }
     })
 
     $(document).on("click", ".room", function () {

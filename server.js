@@ -7,10 +7,11 @@ app.set("views", "./views")
 
 var server = require("http").Server(app)
 var io = require("socket.io")(server);
-server.listen(3000);
+server.listen(3000, (req, res) =>{
+    console.log("Server is listening port 3000")
+});
 
 var mangUsers = []
-var mangPhong = []
 
 io.on("connection", function (socket) {
     console.log("Co nguoi vua ket noi " + socket.id);

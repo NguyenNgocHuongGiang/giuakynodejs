@@ -122,4 +122,5 @@ $(document).ready(function () {
         var tenPhong = $(this).text();
         socket.emit("change-chat", tenPhong);
     });
+    
 })
